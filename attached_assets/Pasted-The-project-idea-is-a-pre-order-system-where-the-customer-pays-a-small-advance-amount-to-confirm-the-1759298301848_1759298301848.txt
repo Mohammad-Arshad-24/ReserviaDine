@@ -1,0 +1,22 @@
+The project idea is a pre-order system where the customer pays a small advance amount to confirm the order. Then, as soon as the customer reaches the restaurant—whose location is tracked by the app—the restaurant has the order ready immediately, eliminating wait time at the restaurant.
+
+Here are the key points focused on this clarified approach:
+Key Points to Keep in Mind
+
+Advance Booking with Partial Payment :
+
+-Allow customers to select dishes and pay a small deposit or token amount upfront.This confirms the order and gives the kitchen a heads-up to start preparation.
+
+-Real-Time Location Tracking :The app requests permission to track the customer's GPS location in real-time.When the customer comes within a preset radius (geofence) of the restaurant, an alert triggers the kitchen to finalize and have the food ready just in time.
+
+-Order Preparation Scheduling :Start cooking only after receiving the partial payment and prepare timed around the customer’s estimated arrival.Use location data smartly to avoid food being ready too early or too late.
+
+-Customer Arrival Confirmation :Notify the customer via app when their order is ready upon arrival.Staff can verify arrival via the app or location to hand over the order seamlessly.
+
+-User Experience :A clear indication of advance payment and balance amount (if any) due at pickup.Option to track order status and restaurant updates on the app.Responsive UI/UX showing estimated preparation time and arrival alerts.
+
+-Backend Considerations :Real-time location processing.Payment gateway handling small upfront payments and final settlement.Integration between order management and geofencing/location alert systems.
+
+-Privacy and Security :Data protection for customer location.Ability for customer to disable location tracking after arrival and pickup.Secure payment processing and sensitive data management.
+
+add a modern login/sign up page and add a toggle where users can switch in between bright mode and dark mode, in bright mode let the colours be light and pleasant, in dark mode let the colours be dark blue and gradient purple in colour
