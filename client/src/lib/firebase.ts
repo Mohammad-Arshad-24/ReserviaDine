@@ -4,14 +4,14 @@ import { getDatabase, ref, push, set, onValue, get, child } from "firebase/datab
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDlCXkuR-ovpnhBazjUn-_4OY6Zl9Rwoy8",
-  authDomain: "foodprebook-a25d8.firebaseapp.com",
-  databaseURL: "https://foodprebook-a25d8-default-rtdb.firebaseio.com",
-  projectId: "foodprebook-a25d8",
-  storageBucket: "foodprebook-a25d8.firebasestorage.app",
-  messagingSenderId: "800850531009",
-  appId: "1:800850531009:web:67b97f503e09a99f16fa40",
-  measurementId: "G-Y4MS8FGJJG",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDlCXkuR-ovpnhBazjUn-_4OY6Zl9Rwoy8",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "foodprebook-a25d8.firebaseapp.com",
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL || "https://foodprebook-a25d8-default-rtdb.firebaseio.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "foodprebook-a25d8",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "foodprebook-a25d8.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "800850531009",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:800850531009:web:67b97f503e09a99f16fa40",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-Y4MS8FGJJG",
 };
 
 // Initialize Firebase

@@ -60,10 +60,20 @@ This is a **full-stack application** with both frontend (React) and backend (Nod
 ## Environment Variables
 Your app needs these environment variables for full functionality:
 
+### Frontend Environment Variables (Vite - must start with VITE_)
 ```bash
-# Firebase Configuration (already set in client code)
-FIREBASE_DATABASE_URL=https://foodprebook-a25d8-default-rtdb.firebaseio.com
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_DATABASE_URL=https://your_project-default-rtdb.firebaseio.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+```
 
+### Backend Environment Variables
+```bash
 # For Firebase Admin SDK (backend)
 FIREBASE_SERVICE_ACCOUNT_JSON={"type":"service_account",...}
 # OR
@@ -76,6 +86,9 @@ DATABASE_URL=your_database_url
 NODE_ENV=production
 PORT=3000
 ```
+
+### Security Note
+⚠️ **Never commit API keys to version control!** Use environment variables and keep `.env` files in `.gitignore`.
 
 ## Current Build Output
 - **Frontend:** `dist/public/` (static files for Netlify/GitHub Pages)
