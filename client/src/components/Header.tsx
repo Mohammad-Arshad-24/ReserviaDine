@@ -13,6 +13,7 @@ interface HeaderProps {
   currentUser?: any;
   onSignOut?: () => void;
   ownedRestaurants?: { id: string; name: string }[];
+  hideTrackOrders?: boolean; // Hide the Track orders button
 }
 
 export function Header({
@@ -23,6 +24,7 @@ export function Header({
   currentUser,
   onSignOut,
   ownedRestaurants,
+  hideTrackOrders = false,
 }: HeaderProps) {
   const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
   let lastOrderId: string | null = null;
@@ -83,9 +85,11 @@ export function Header({
             )}
           </div>
 
-          <a href="/orders" className="ml-1 sm:ml-2">
-            <Button variant="secondary" size="sm" className="text-xs sm:text-sm">Track orders</Button>
-          </a>
+          {!hideTrackOrders && (
+            <a href="/orders" className="ml-1 sm:ml-2">
+              <Button variant="secondary" size="sm" className="text-xs sm:text-sm">Track orders</Button>
+            </a>
+          )}
 
           <ThemeToggle />
 

@@ -214,6 +214,7 @@ export default function OwnerDashboard({ currentUser }: OwnerDashboardProps) {
       <Header
         currentUser={user}
         onSignOut={handleSignOut} // Ensures logout functionality
+        hideTrackOrders={true} // Hide Track orders button in owner dashboard
       />
 
       {/* decorative background accents */}
