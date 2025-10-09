@@ -38,21 +38,21 @@ export function Header({
     <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <div className="h-8 w-8 rounded-md overflow-hidden flex items-center justify-center bg-black">
               <img src={appLogo as unknown as string} alt="Reservia Dine" className="h-full w-full object-cover" />
             </div>
-            <h1 className="text-xl font-semibold font-[var(--font-accent)]">
+            <h1 className="text-lg sm:text-xl font-semibold font-[var(--font-accent)]">
               Reservia Dine
             </h1>
             {currentUser?.role === 'business' ? (
-              <span className="ml-2 text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-900">Business</span>
+              <span className="ml-1 sm:ml-2 text-xs px-1 sm:px-2 py-0.5 rounded bg-amber-100 text-amber-900">Business</span>
             ) : null}
-            <a href="/" className="ml-4 text-sm underline">Home</a>
+            <a href="/" className="ml-2 sm:ml-4 text-xs sm:text-sm underline">Home</a>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <Button
             variant="ghost"
             size="icon"
@@ -83,13 +83,13 @@ export function Header({
             )}
           </div>
 
-          <a href="/orders" className="ml-2">
-            <Button variant="secondary" size="sm">Track orders</Button>
+          <a href="/orders" className="ml-1 sm:ml-2">
+            <Button variant="secondary" size="sm" className="text-xs sm:text-sm">Track orders</Button>
           </a>
 
           <ThemeToggle />
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 sm:gap-3">
             <Button
               variant="ghost"
               size="icon"
@@ -106,9 +106,9 @@ export function Header({
               )}
             </Button>
             {onSignOut && currentUser?.email ? (
-              <div className="hidden sm:flex items-center gap-2">
-                <span className="text-xs text-muted-foreground truncate max-w-[140px]" title={currentUser.email}>{currentUser.email}</span>
-                <Button variant="ghost" size="sm" onClick={onSignOut}>Sign out</Button>
+              <div className="flex items-center gap-1 sm:gap-2">
+                <span className="hidden sm:block text-xs text-muted-foreground truncate max-w-[140px]" title={currentUser.email}>{currentUser.email}</span>
+                <Button variant="ghost" size="sm" onClick={onSignOut} className="text-xs px-2 sm:px-3">Sign out</Button>
               </div>
             ) : null}
           </div>
