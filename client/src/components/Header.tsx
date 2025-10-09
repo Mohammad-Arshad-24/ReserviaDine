@@ -1,8 +1,8 @@
-import { ShoppingCart, MapPin, User } from "lucide-react";
+import { ShoppingCart, MapPin } from "lucide-react";
 import appLogo from "@assets/generated_images/logo.jpeg";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ThemeToggle } from "./ThemeToggle";
+import { AccountsDropdown } from "./AccountsDropdown";
 import { useState } from "react";
 
 interface HeaderProps {
@@ -91,31 +91,12 @@ export function Header({
             </a>
           )}
 
-          <ThemeToggle />
-
-          <div className="flex items-center gap-1 sm:gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => { onAuthClick && onAuthClick(); }}
-              className="hover-elevate active-elevate-2"
-              data-testid="button-auth"
-            >
-              {isAuthenticated && currentUser?.email ? (
-                <div className="h-5 w-5 rounded-full bg-gray-800 text-white flex items-center justify-center text-xs font-bold" title={currentUser.email}>
-                  {(currentUser.email || '').charAt(0).toUpperCase()}
-                </div>
-              ) : (
-                <User className="h-5 w-5" />
-              )}
-            </Button>
-            {onSignOut && currentUser?.email ? (
-              <div className="flex items-center gap-1 sm:gap-2">
-                <span className="hidden sm:block text-xs text-muted-foreground truncate max-w-[140px]" title={currentUser.email}>{currentUser.email}</span>
-                <Button variant="ghost" size="sm" onClick={onSignOut} className="text-xs px-2 sm:px-3">Sign out</Button>
-              </div>
-            ) : null}
-          </div>
+          <AccountsDropdown
+            currentUser={currentUser}
+            onSignOut={onSignOut}
+            onAuthClick={onAuthClick}
+            isAuthenticated={isAuthenticated}
+          />
         </div>
       </div>
     </header>
