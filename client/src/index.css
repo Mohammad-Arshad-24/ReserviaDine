@@ -372,3 +372,18 @@
     -webkit-text-fill-color: transparent;
   }
 }
+
+/* Business Dashboard specific styling */
+.business-dashboard-text {
+  color: hsl(var(--foreground));
+}
+
+/* Light mode: yellow text for business dashboard */
+.light .business-dashboard-text {
+  color: #fbbf24; /* yellow-400 */
+}
+
+/* Dark mode: keep default foreground color */
+.dark .business-dashboard-text {
+  color: hsl(var(--foreground));
+}

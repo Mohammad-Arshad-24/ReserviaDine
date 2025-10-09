@@ -244,14 +244,14 @@ export default function OwnerDashboard({ currentUser }: OwnerDashboardProps) {
               <div className="mb-4 text-sm"><strong>Business</strong></div>
             ) : null}
 
-            <section className="mb-6 text-white">
+            <section className="mb-6 business-dashboard-text">
               <h2 className="text-lg font-semibold">Summary</h2>
               <div className="mt-2 text-sm">Total orders across your restaurants: <strong>{orders.length}</strong></div>
               <div className="mt-2 text-sm">
                 <div className="font-medium mb-1">Recent Orders</div>
                 <div className="space-y-2">
                   {orders.slice(0, 5).map((order) => (
-                    <div key={order.id} className="p-2 border rounded text-white">
+                    <div key={order.id} className="p-2 border rounded business-dashboard-text">
                       <div className="text-sm">#{order.id.slice(-6)} • {nameCache[order.restaurantId] || order.restaurantName}</div>
                       <div className="text-xs">Customer: {order.customerPhone || ''}</div>
                       <div className="text-xs">Status: {order.status.toUpperCase()} • ₹{order.totalAmount}</div>
