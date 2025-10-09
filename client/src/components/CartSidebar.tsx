@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { X, Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +8,8 @@ import type { MenuItem } from "./MenuCard";
 
 export interface CartItem extends MenuItem {
   quantity: number;
+  // optional restaurantId carried through from add-to-cart for owner routing
+  restaurantId?: string;
 }
 
 interface CartSidebarProps {
@@ -29,6 +32,14 @@ export function CartSidebar({
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const deposit = Math.round(subtotal * 0.3);
   const balanceDue = subtotal - deposit;
+  const [phone, setPhone] = useState<string>('');
+  useEffect(() => {
+    try {
+      const saved = typeof window !== 'undefined' ? window.localStorage.getItem('customerPhone') : '';
+      setPhone(saved || '');
+    } catch (e) {}
+  }, []);
+  const phoneValid = !!(phone && /[0-9]{7,15}/.test(phone));
 
   if (!isOpen) return null;
 
@@ -114,6 +125,22 @@ export function CartSidebar({
                 </Card>
               ))
             )}
+            {/* Phone input */}
+            {items.length > 0 ? (
+              <div className="mt-2">
+                <label className="block text-sm font-medium mb-1" htmlFor="phone">Contact Phone <span className="text-red-600">*</span></label>
+                <input
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => { setPhone(e.target.value); try { window.localStorage.setItem('customerPhone', e.target.value); } catch (e) {} }}
+                  placeholder="Enter phone number"
+                  className={`w-full px-3 py-2 border rounded outline-none text-black ${phoneValid ? 'border-green-500' : 'border-red-500'} bg-yellow-50`}
+                />
+                {!phoneValid ? (
+                  <div className="text-xs text-red-600 mt-1">Phone number is required to confirm order.</div>
+                ) : null}
+              </div>
+            ) : null}
           </CardContent>
         </ScrollArea>
 
@@ -137,8 +164,9 @@ export function CartSidebar({
             <Button
               className="w-full hover-elevate active-elevate-2"
               size="lg"
-              onClick={onCheckout}
+            onClick={() => { if (!phoneValid) return; onCheckout && onCheckout(); }}
               data-testid="button-checkout"
+            disabled={!phoneValid}
             >
               Confirm Pre-Order (₹{deposit})
             </Button>

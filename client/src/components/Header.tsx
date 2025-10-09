@@ -1,13 +1,18 @@
 import { ShoppingCart, MapPin, User } from "lucide-react";
+import appLogo from "@assets/generated_images/logo.jpeg";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "./ThemeToggle";
+import { useState } from "react";
 
 interface HeaderProps {
   cartItemCount?: number;
   onCartClick?: () => void;
-  onAuthClick?: () => void;
+  onAuthClick?: () => void; // simplified to open central AuthModal
   isAuthenticated?: boolean;
+  currentUser?: any;
+  onSignOut?: () => void;
+  ownedRestaurants?: { id: string; name: string }[];
 }
 
 export function Header({
@@ -15,18 +20,35 @@ export function Header({
   onCartClick,
   onAuthClick,
   isAuthenticated = false,
+  currentUser,
+  onSignOut,
+  ownedRestaurants,
 }: HeaderProps) {
+  const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
+  let lastOrderId: string | null = null;
+  try {
+    const raw = typeof window !== 'undefined' ? window.localStorage.getItem('lastOrder') : null;
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      lastOrderId = parsed?.id || null;
+    }
+  } catch (e) {}
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-md bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">Q</span>
+            <div className="h-8 w-8 rounded-md overflow-hidden flex items-center justify-center bg-black">
+              <img src={appLogo as unknown as string} alt="Reservia Dine" className="h-full w-full object-cover" />
             </div>
             <h1 className="text-xl font-semibold font-[var(--font-accent)]">
-              QuickEats
+              Reservia Dine
             </h1>
+            {currentUser?.role === 'business' ? (
+              <span className="ml-2 text-xs px-2 py-0.5 rounded bg-amber-100 text-amber-900">Business</span>
+            ) : null}
+            <a href="/" className="ml-4 text-sm underline">Home</a>
           </div>
         </div>
 
@@ -61,17 +83,35 @@ export function Header({
             )}
           </div>
 
+          <a href="/orders" className="ml-2">
+            <Button variant="secondary" size="sm">Track orders</Button>
+          </a>
+
           <ThemeToggle />
 
-          <Button
-            variant={isAuthenticated ? "ghost" : "default"}
-            size="icon"
-            onClick={onAuthClick}
-            className="hover-elevate active-elevate-2"
-            data-testid="button-auth"
-          >
-            <User className="h-5 w-5" />
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => { onAuthClick && onAuthClick(); }}
+              className="hover-elevate active-elevate-2"
+              data-testid="button-auth"
+            >
+              {isAuthenticated && currentUser?.email ? (
+                <div className="h-5 w-5 rounded-full bg-gray-800 text-white flex items-center justify-center text-xs font-bold" title={currentUser.email}>
+                  {(currentUser.email || '').charAt(0).toUpperCase()}
+                </div>
+              ) : (
+                <User className="h-5 w-5" />
+              )}
+            </Button>
+            {onSignOut && currentUser?.email ? (
+              <div className="hidden sm:flex items-center gap-2">
+                <span className="text-xs text-muted-foreground truncate max-w-[140px]" title={currentUser.email}>{currentUser.email}</span>
+                <Button variant="ghost" size="sm" onClick={onSignOut}>Sign out</Button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </header>

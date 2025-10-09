@@ -1,0 +1,17 @@
+{
+  "restaurants": [
+    { "name": "Maddur tiffins", "email": "hackerearthai@gmail.com" },
+    { "name": "Adyar Ananda Bhavan", "email": "" },
+    { "name": "Nisarga family Dhaba", "email": "" },
+    { "name": "Ginger Lake View", "email": "" },
+    { "name": "Swadh Restaurant", "email": "" },
+    { "name": "Saisangeet Vegetarian Restaurant", "email": "" },
+    { "name": "Bell24 Family Restaurant", "email": "" },
+    { "name": "Devaras Restaurant", "email": "" },
+    { "name": "Hotel Opal", "email": "" },
+    { "name": "Sagar Palace", "email": "" },
+    { "name": "Kamat Upahar", "email": "" },
+    { "name": "Hotel Rama Krishna", "email": "" }
+  ],
+  "source": "e:\\Downloads\\foodprebook-a25d8-default-rtdb-export (3).json"
+}

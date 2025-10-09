@@ -13,7 +13,7 @@ interface OrderStatusProps {
 const statusSteps = [
   { key: "confirmed", label: "Payment Confirmed", icon: CheckCircle2 },
   { key: "preparing", label: "Preparing Order", icon: Clock },
-  { key: "ready", label: "Ready for Pickup", icon: CheckCircle2 },
+  { key: "ready", label: "Your order is Ready", icon: CheckCircle2 },
 ];
 
 export function OrderStatus({ status, estimatedTime = 20, orderId = "#12345" }: OrderStatusProps) {

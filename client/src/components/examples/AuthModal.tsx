@@ -14,7 +14,9 @@ export default function AuthModalExample() {
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           onLogin={(email, password) => console.log("Login:", email, password)}
-          onSignup={(email, password, name) => console.log("Signup:", email, password, name)}
+          onSignup={(email, password, name, role) => console.log("Signup:", email, password, name, role)}
+          onGoogleLogin={(role) => console.log('Google login as', role)}
+          onGoogleSignup={(role) => console.log('Google signup as', role)}
         />
       </div>
     </ThemeProvider>
