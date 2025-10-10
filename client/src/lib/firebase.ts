@@ -4,7 +4,7 @@ import { getDatabase, ref, push, set, onValue, get, child } from "firebase/datab
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDlCXkuR-ovpnhBazjUn-_4OY6Zl9Rwoy8",
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "foodprebook-a25d8.firebaseapp.com",
   databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL || "https://foodprebook-a25d8-default-rtdb.firebaseio.com",
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "foodprebook-a25d8",
