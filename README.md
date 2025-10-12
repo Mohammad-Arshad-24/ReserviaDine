@@ -32,7 +32,7 @@ Reservia Dine is a web app that lets users pre-order meals, pay a small advance,
  <img width="1919" height="939" alt="Image" src="https://github.com/user-attachments/assets/25b6d3ed-39a8-472c-ace1-fbdd42aa1b55" />
 
 
-## How to Use ✅ :
+## How it Works ✅ :
 
 - Select your route and destination restaurant.
 
@@ -46,7 +46,7 @@ Reservia Dine is a web app that lets users pre-order meals, pay a small advance,
 <img width="1902" height="675" alt="Image" src="https://github.com/user-attachments/assets/5fa77ff4-be3d-4fc7-96eb-dd65fa0b52c7" />
 
 
-## How It Works 👍 :
+## How To Use 👍 :
 
 ### i] Choose your travel route (BLR-Mysore, BLR-Chennai, or BLR-Mumbai) :
 
