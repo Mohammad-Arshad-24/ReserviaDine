@@ -72,7 +72,7 @@ Reservia Dine is a web app that lets users pre-order meals, pay a small advance,
 
 ## TRY OUT OUR WEBSITE 🔥 :
 
-https://reserviadine.netlify.app/
+https://reserviadine.onrender.com/
 
 
 
